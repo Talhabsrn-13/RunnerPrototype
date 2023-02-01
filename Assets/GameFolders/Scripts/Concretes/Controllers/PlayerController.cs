@@ -13,13 +13,15 @@ namespace RunnerPrototype2.Controllers
         [SerializeField] bool _isJump;
         [SerializeField] float _jumpForce;
         [SerializeField] float _moveSpeed = 10f;
-
+        [SerializeField] float _horizontalBoundary = 4.5f;
         HorizontalMover _horizontalMover;
         JumpWithRigidbody _jumpWithRigidbody;
 
         IInputReader _input;
 
         float _horizontal;
+        public float MoveSpeed => _moveSpeed;
+        public float HorizontalBoundary => _horizontalBoundary;
         private void Awake()
         {
             _horizontalMover = new HorizontalMover(this);
@@ -38,7 +40,7 @@ namespace RunnerPrototype2.Controllers
         }
         private void FixedUpdate()
         {
-            _horizontalMover.TickFixed(_horizontal, _moveSpeed);
+            _horizontalMover.TickFixed(_horizontal);
 
             if (_isJump)
             {
