@@ -1,0 +1,76 @@
+{
+    "name": "GameMap",
+    "maps": [
+        {
+            "name": "PlayerOnFoot",
+            "id": "8bae9774-6457-4472-9afc-12a711aed56f",
+            "actions": [
+                {
+                    "name": "HorizontalMove",
+                    "type": "PassThrough",
+                    "id": "83a432f3-76bd-4403-80b6-d9f896ac6d46",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Jump",
+                    "type": "PassThrough",
+                    "id": "0e5bafbc-bae1-4e92-881b-240b3c401bb1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "AD Axis",
+                    "id": "8ef57b4e-d0ef-4028-8a89-c09afe890fb1",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HorizontalMove",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "a061a8bf-573e-40e7-be8e-4b96b7996857",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HorizontalMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "54eef547-f101-49f6-8a22-119e00b0bbda",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HorizontalMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "3c04f5f6-d728-4153-a9b6-53c1a5735ec6",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Tap(duration=0.01)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

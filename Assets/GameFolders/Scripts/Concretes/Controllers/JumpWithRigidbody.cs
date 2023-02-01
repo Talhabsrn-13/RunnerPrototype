@@ -8,6 +8,7 @@ namespace RunnerPrototype2.Movements
     public class JumpWithRigidbody
     {
         Rigidbody _playerRigidbody;
+        public bool CanJump => _playerRigidbody.velocity.y != 0;
         public JumpWithRigidbody(PlayerController playerController)
         {
             _playerRigidbody = playerController.GetComponent<Rigidbody>(); 
@@ -15,7 +16,7 @@ namespace RunnerPrototype2.Movements
 
         public void FixedTick(float jumpForce)
         {
-            if (_playerRigidbody.velocity.y != 0) return;
+            if (CanJump) return;
 
             _playerRigidbody.velocity = Vector3.zero;
             _playerRigidbody.AddForce(Vector3.up * Time.deltaTime * jumpForce);
