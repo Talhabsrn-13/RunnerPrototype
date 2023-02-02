@@ -17,7 +17,7 @@ namespace RunnerPrototype2.Movements
             _moveSpeed = playerController.MoveSpeed;
             _horizontalBoundary = playerController.HorizontalBoundary;
         }
-
+ 
         public void TickFixed(float horizontal)
         {
             if (horizontal == 0f) return;
