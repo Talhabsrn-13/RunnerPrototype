@@ -1,5 +1,6 @@
 using RunnerPrototype2.Abstract.Inputs;
 using RunnerPrototype2.Inputs;
+using RunnerPrototype2.Managers;
 using RunnerPrototype2.Movements;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,18 +11,20 @@ namespace RunnerPrototype2.Controllers
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] bool _isJump;
+       
         [SerializeField] float _jumpForce;
         [SerializeField] float _moveSpeed = 10f;
-        [SerializeField] float _horizontalBoundary = 4.5f;
+        [SerializeField] float _moveBoundary = 4.5f;
+       
         HorizontalMover _horizontalMover;
         JumpWithRigidbody _jumpWithRigidbody;
-
-        IInputReader _input;
-
+        IInputReader _input; 
         float _horizontal;
+        bool _isJump;
+        bool _isDead = false;
+
         public float MoveSpeed => _moveSpeed;
-        public float HorizontalBoundary => _horizontalBoundary;
+        public float HorizontalBoundary => _moveBoundary;
         private void Awake()
         {
             _horizontalMover = new HorizontalMover(this);
@@ -32,6 +35,7 @@ namespace RunnerPrototype2.Controllers
 
         private void Update()
         {
+            if (_isDead) return;
             _horizontal = _input.Horizontal;
             if (_input.IsJump)
             {
@@ -47,7 +51,15 @@ namespace RunnerPrototype2.Controllers
                 _jumpWithRigidbody.FixedTick(_jumpForce);
             }
             _isJump = false;
-
+        }
+        private void OnTriggerEnter(Collider other)
+        {
+            EnemyController enemyController = other.GetComponent<EnemyController>();
+            if (enemyController != null)
+            {
+                _isDead = true;
+                GameManager.Instance.StopGame();
+            }
         }
     }
 }
