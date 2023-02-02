@@ -7,7 +7,6 @@ namespace RunnerPrototype2.UIs
 {
     public class GamePanel : MonoBehaviour
     {
-        [SerializeField] TextMeshProUGUI _scoreText;
         public void YesButton()
         {
             GameManager.Instance.LoadScene("Game");
@@ -16,10 +15,7 @@ namespace RunnerPrototype2.UIs
         {
             GameManager.Instance.LoadScene("Menu");
         }
-        private void OnEnable()
-        {
-            _scoreText.text = GameManager.Instance.Score.ToString();
-        }
+      
     }
 
 }
