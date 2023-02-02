@@ -7,6 +7,7 @@ namespace RunnerPrototype2.Managers
 {
     public class GameManager : SingletonMonoBehaviourObject<GameManager>
     {
+        public event System.Action OnStopTime;
         public int Score { get; set; }
         private void Awake()
         {
@@ -16,6 +17,7 @@ namespace RunnerPrototype2.Managers
         public void StopGame()
         {
             Time.timeScale = 0f;
+            OnStopTime?.Invoke();
         }
 
         public void LoadScene(string sceneName)
