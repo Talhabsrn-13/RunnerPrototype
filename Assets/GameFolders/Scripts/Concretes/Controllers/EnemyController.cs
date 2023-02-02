@@ -1,3 +1,4 @@
+using RunnerPrototype2.Managers;
 using RunnerPrototype2.Movements;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,6 +34,7 @@ namespace RunnerPrototype2.Controllers
         void KillYourSelf()
         {
             Destroy(this.gameObject);
+            GameManager.Instance.Score++;
         }
     }
 }

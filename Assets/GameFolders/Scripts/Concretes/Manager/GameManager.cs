@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RunnerPrototype2.Abstract.Utilities;
+using UnityEngine.SceneManagement;
 namespace RunnerPrototype2.Managers
 {
     public class GameManager : SingletonMonoBehaviourObject<GameManager>
     {
+        public int Score { get; set; }
         private void Awake()
         {
             SingletonThisObject(this);
@@ -16,9 +18,14 @@ namespace RunnerPrototype2.Managers
             Time.timeScale = 0f;
         }
 
-        public void LoadScene()
+        public void LoadScene(string sceneName)
         {
-            //load islemleri
+            StartCoroutine(LoadSceneAsync(sceneName));
+        }
+        IEnumerator LoadSceneAsync(string sceneName)
+        {
+            Time.timeScale = 1f;
+            yield return SceneManager.LoadSceneAsync(sceneName);
         }
         public void ExitGame()
         {
