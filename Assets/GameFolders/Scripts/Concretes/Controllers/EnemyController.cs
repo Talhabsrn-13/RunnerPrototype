@@ -33,7 +33,7 @@ namespace RunnerPrototype2.Controllers
 
         void KillYourSelf()
         {
-            Destroy(this.gameObject);
+            EnemyManager.Instance.SetPool(this);
             GameManager.Instance.Score++;
         }
     }

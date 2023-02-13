@@ -1,4 +1,5 @@
 
+using RunnerPrototype2.Managers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ namespace RunnerPrototype2.Controllers
         [Range(10, 15)] [SerializeField] float _max;
 
         [SerializeField] float _maxSpawnTime;
-        [SerializeField] EnemyController _enemyController;
+
         float _currentTime = 0f;
 
         private void OnEnable()
@@ -29,9 +30,12 @@ namespace RunnerPrototype2.Controllers
         }
         public void Spawn()
         {
-            EnemyController newEnemy = Instantiate(_enemyController, transform.position, transform.rotation);
+            EnemyController newEnemy = EnemyManager.Instance.GetPool();
             newEnemy.transform.parent = this.transform;
-            _currentTime = 0f;          
+            newEnemy.transform.position = this.transform.position;
+            newEnemy.gameObject.SetActive(true);
+
+            _currentTime = 0f;
             GetRandomSpawnTime();
         }
         private void GetRandomSpawnTime()
