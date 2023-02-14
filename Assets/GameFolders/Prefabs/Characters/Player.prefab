@@ -47,10 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4954135755097b4589ecf196540774a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isJump: 0
-  _jumpForce: 1500
+  _moveBoundary: 4.5
   _moveSpeed: 10
-  _horizontalBoundary: 4.5
+  _jumpForce: 1500
 --- !u!54 &713812509
 Rigidbody:
   m_ObjectHideFlags: 0

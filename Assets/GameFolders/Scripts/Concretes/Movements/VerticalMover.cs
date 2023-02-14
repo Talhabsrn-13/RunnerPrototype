@@ -10,12 +10,12 @@ namespace RunnerPrototype2.Movements
 
     public class VerticalMover : IMover
     {
-        IEntityController _entityController;
+        Abstract.Controllers.IEntityController _entityController;
         float _moveSpeed = 5f;
-        public VerticalMover(IEntityController entityController)
+        public VerticalMover(Abstract.Controllers.IEntityController entityController)
         {
             _entityController = entityController;
-            //_moveSpeed = _entityController.MoveSpeed;
+            _moveSpeed = _entityController.MoveSpeed;
         }
         public void FixedTick(float vertical = 1)
         {

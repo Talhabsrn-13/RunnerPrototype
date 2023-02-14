@@ -9,15 +9,15 @@ namespace RunnerPrototype2.Movements
 {
     public class HorizontalMover : IMover
     {
-        IEntityController _playerController;
+        Abstract.Controllers.IEntityController _playerController;
         float _moveSpeed;
         float _horizontalBoundary;
-        public HorizontalMover(IEntityController entityController)
+        public HorizontalMover(Abstract.Controllers.IEntityController entityController)
         {
             _playerController = entityController;
 
-            //_moveSpeed = entityController.MoveSpeed;
-            //_horizontalBoundary = entityController.HorizontalBoundary;
+            _moveSpeed = entityController.MoveSpeed;
+            _horizontalBoundary = entityController.MoveBoundary;
         }
  
         public void FixedTick(float horizontal)

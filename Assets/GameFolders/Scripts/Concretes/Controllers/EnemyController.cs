@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace RunnerPrototype2.Controllers
 {
-    public class EnemyController : MonoBehaviour, IEntityController
+    public class EnemyController : MyCharacterController, Abstract.Controllers.IEntityController
     {
-        VerticalMover _verticalMover;
-        [SerializeField] float _moveSpeed;
-
+        VerticalMover _mover;
+       
         [SerializeField] float _maxLifeTime = 7;
         float _currentLifeTime;
-        public float MoveSpeed => _moveSpeed;
+       
         private void Awake()
         {
-            _verticalMover = new VerticalMover(this);
+            _mover = new VerticalMover(this);
         }
         private void Update()
         {
@@ -29,7 +28,7 @@ namespace RunnerPrototype2.Controllers
         }
         private void FixedUpdate()
         {
-            _verticalMover.FixedTick();
+            _mover.FixedTick();
         }
 
         void KillYourSelf()

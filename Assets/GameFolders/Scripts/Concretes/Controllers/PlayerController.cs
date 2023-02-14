@@ -11,12 +11,10 @@ using UnityEngine.InputSystem;
 
 namespace RunnerPrototype2.Controllers
 {
-    public class PlayerController : MonoBehaviour, IEntityController
+    public class PlayerController : MyCharacterController, Abstract.Controllers.IEntityController
     {
 
         [SerializeField] float _jumpForce;
-        [SerializeField] float _moveSpeed = 10f;
-        [SerializeField] float _moveBoundary = 4.5f;
 
         IMover _mover;
         IJump _jumpWithRigidbody;
@@ -26,11 +24,9 @@ namespace RunnerPrototype2.Controllers
         bool _isJump;
         bool _isDead = false;
 
-        public float MoveSpeed => _moveSpeed;
-        public float HorizontalBoundary => _moveBoundary;
         private void Awake()
         {
-           
+
             _mover = new HorizontalMover(this);
             _jumpWithRigidbody = new JumpWithRigidbody(this);
 
@@ -58,7 +54,7 @@ namespace RunnerPrototype2.Controllers
         }
         private void OnTriggerEnter(Collider other)
         {
-            IEntityController entityController = other.GetComponent<IEntityController>();
+            Abstract.Controllers.IEntityController entityController = other.GetComponent<Abstract.Controllers.IEntityController>();
             if (entityController != null)
             {
                 _isDead = true;
