@@ -1,3 +1,4 @@
+using RunnerPrototype2.Abstract.Controllers;
 using RunnerPrototype2.Managers;
 using RunnerPrototype2.Movements;
 using System.Collections;
@@ -5,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace RunnerPrototype2.Controllers
 {
-    public class EnemyController : MonoBehaviour
+    public class EnemyController : MonoBehaviour, IEntityController
     {
         VerticalMover _verticalMover;
         [SerializeField] float _moveSpeed;

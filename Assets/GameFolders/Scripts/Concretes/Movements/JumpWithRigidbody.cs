@@ -1,3 +1,4 @@
+using RunnerPrototype2.Abstract.Movements;
 using RunnerPrototype2.Controllers;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,7 +6,7 @@ using UnityEngine;
 
 namespace RunnerPrototype2.Movements
 {
-    public class JumpWithRigidbody
+    public class JumpWithRigidbody : IJump
     {
         Rigidbody _playerRigidbody;
         public bool CanJump => _playerRigidbody.velocity.y != 0;
@@ -23,4 +24,3 @@ namespace RunnerPrototype2.Movements
         }
     }
 }
-

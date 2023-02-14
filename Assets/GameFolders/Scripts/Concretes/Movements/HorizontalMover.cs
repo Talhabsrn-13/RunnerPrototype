@@ -1,3 +1,5 @@
+using RunnerPrototype2.Abstract.Controllers;
+using RunnerPrototype2.Abstract.Movements;
 using RunnerPrototype2.Controllers;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,20 +7,20 @@ using UnityEngine;
 
 namespace RunnerPrototype2.Movements
 {
-    public class HorizontalMover
+    public class HorizontalMover : IMover
     {
-        PlayerController _playerController;
+        IEntityController _playerController;
         float _moveSpeed;
         float _horizontalBoundary;
-        public HorizontalMover(PlayerController playerController)
+        public HorizontalMover(IEntityController entityController)
         {
-            _playerController = playerController;
+            _playerController = entityController;
 
-            _moveSpeed = playerController.MoveSpeed;
-            _horizontalBoundary = playerController.HorizontalBoundary;
+            //_moveSpeed = entityController.MoveSpeed;
+            //_horizontalBoundary = entityController.HorizontalBoundary;
         }
  
-        public void TickFixed(float horizontal)
+        public void FixedTick(float horizontal)
         {
             if (horizontal == 0f) return;
 
