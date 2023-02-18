@@ -1,4 +1,5 @@
 
+using RunnerPrototype2.Enums;
 using RunnerPrototype2.Managers;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,9 +12,12 @@ namespace RunnerPrototype2.Controllers
         [Range(1, 5)] [SerializeField] float _min;
         [Range(10, 15)] [SerializeField] float _max;
 
-        [SerializeField] float _maxSpawnTime;
-
+        float _maxSpawnTime;
         float _currentTime = 0f;
+        int _index = 0;
+        float _maxAddEnemyTime;
+
+        public bool CanIncrease => _index < EnemyManager.Instance.Count;
 
         private void OnEnable()
         {
@@ -27,10 +31,19 @@ namespace RunnerPrototype2.Controllers
             {
                 Spawn();
             }
+            if (!CanIncrease) return;
+            if (_maxAddEnemyTime < Time.time)
+            {
+                _maxAddEnemyTime = Time.time + EnemyManager.Instance.AddDelayTime;
+                IncreaseIndex();
+            }
         }
+
+
+
         public void Spawn()
         {
-            EnemyController newEnemy = EnemyManager.Instance.GetPool();
+            EnemyController newEnemy = EnemyManager.Instance.GetPool((EnemyEnum)Random.Range(0, _index));
             newEnemy.transform.parent = this.transform;
             newEnemy.transform.position = this.transform.position;
             newEnemy.gameObject.SetActive(true);
@@ -41,6 +54,13 @@ namespace RunnerPrototype2.Controllers
         private void GetRandomSpawnTime()
         {
             _maxSpawnTime = Random.Range(_min, _max);
+        }
+        private void IncreaseIndex()
+        {
+            if (CanIncrease)
+            {
+                _index++;
+            }
         }
     }
 }

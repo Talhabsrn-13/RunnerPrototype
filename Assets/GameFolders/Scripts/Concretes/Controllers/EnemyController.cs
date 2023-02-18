@@ -1,4 +1,5 @@
 using RunnerPrototype2.Abstract.Controllers;
+using RunnerPrototype2.Enums;
 using RunnerPrototype2.Managers;
 using RunnerPrototype2.Movements;
 using System.Collections;
@@ -12,7 +13,9 @@ namespace RunnerPrototype2.Controllers
        
         [SerializeField] float _maxLifeTime = 7;
         float _currentLifeTime;
-       
+      
+        [SerializeField] EnemyEnum _enemyEnum;
+        public EnemyEnum EnemyType => _enemyEnum;
         private void Awake()
         {
             _mover = new VerticalMover(this);
