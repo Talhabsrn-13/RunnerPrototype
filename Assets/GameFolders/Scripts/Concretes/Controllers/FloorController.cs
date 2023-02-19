@@ -7,7 +7,7 @@ namespace RunnerPrototype2.Controllers
     public class FloorController : MonoBehaviour
     {
         Material _material;
-        [Range(0.5f,2)]
+        [Range(0.5f,2.5f)]
         [SerializeField] float _moveSpeed;
 
         private void Awake()

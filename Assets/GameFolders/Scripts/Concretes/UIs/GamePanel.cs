@@ -9,11 +9,11 @@ namespace RunnerPrototype2.UIs
     {
         public void YesButton()
         {
-            GameManager.Instance.LoadScene("Game");
+           GameManager.Instance.LoadScene("Game");
         }
         public void NoButton()
         {
-            GameManager.Instance.LoadScene("Menu");
+           GameManager.Instance.LoadScene("Menu");
         }
       
     }

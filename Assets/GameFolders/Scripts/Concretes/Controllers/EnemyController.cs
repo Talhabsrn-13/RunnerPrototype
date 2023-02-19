@@ -39,5 +39,11 @@ namespace RunnerPrototype2.Controllers
             EnemyManager.Instance.SetPool(this);
             GameManager.Instance.Score++;
         }
+        public void SetMoveSpeed(float moveSpeed = 10f)
+        {
+            if (moveSpeed < _moveSpeed) return;
+
+            _moveSpeed = moveSpeed;
+        }
     }
 }

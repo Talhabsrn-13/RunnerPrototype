@@ -10,7 +10,7 @@ namespace RunnerPrototype2.Controllers
     public class SpawnerController : MonoBehaviour
     {
         [Range(1, 5)] [SerializeField] float _min;
-        [Range(10, 15)] [SerializeField] float _max;
+        [Range(6, 15)] [SerializeField] float _max;
 
         float _maxSpawnTime;
         float _currentTime = 0f;

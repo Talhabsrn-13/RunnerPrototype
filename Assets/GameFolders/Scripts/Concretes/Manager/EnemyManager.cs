@@ -1,6 +1,7 @@
 using RunnerPrototype2.Abstract.Utilities;
 using RunnerPrototype2.Controllers;
 using RunnerPrototype2.Enums;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,9 +11,11 @@ namespace RunnerPrototype2.Managers
     public class EnemyManager : SingletonMonoBehaviourObject<EnemyManager>
     {
         [SerializeField] float _addDelayTime = 50f;
-        Dictionary<EnemyEnum, Queue<EnemyController>> _enemies = new Dictionary<EnemyEnum, Queue<EnemyController>>();
         [SerializeField] EnemyController[] _enemyPrefabs;
 
+        Dictionary<EnemyEnum, Queue<EnemyController>> _enemies = new Dictionary<EnemyEnum, Queue<EnemyController>>();
+
+        float _moveSpeed;
         public float AddDelayTime => _addDelayTime;
 
         public int Count => _enemyPrefabs.Length;
@@ -21,6 +24,9 @@ namespace RunnerPrototype2.Managers
         {
             SingletonThisObject(this);
         }
+
+
+
         private void Start()
         {
             InitializePool();
@@ -59,10 +65,21 @@ namespace RunnerPrototype2.Managers
                 for (int i = 0; i < 2; i++)
                 {
                     EnemyController newEnemy = Instantiate(_enemyPrefabs[(int)enemyType]);
+                    newEnemy.gameObject.SetActive(false);
                     enemyControllers.Enqueue(newEnemy);
-                }              
+                }
             }
-            return enemyControllers.Dequeue();
+            EnemyController enemyController = enemyControllers.Dequeue();
+            enemyController.SetMoveSpeed(_moveSpeed);
+            return enemyController;
+        }
+        public void SetMoveSpeed(float moveSpeed)
+        {
+            _moveSpeed = moveSpeed;
+        }
+        public void SetAddDelayTime(float addDelayTime)
+        {
+            _addDelayTime = addDelayTime;
         }
     }
 

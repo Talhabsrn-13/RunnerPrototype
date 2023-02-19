@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6468676490593547219
+--- !u!1 &6136369699661904777
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6468676490593547218}
-  - component: {fileID: 6468676490593547229}
+  - component: {fileID: 8148600052699192837}
+  - component: {fileID: 3961896737100219506}
   m_Layer: 0
-  m_Name: '[GameManager]'
+  m_Name: LevelInitializer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6468676490593547218
+--- !u!4 &8148600052699192837
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6468676490593547219}
+  m_GameObject: {fileID: 6136369699661904777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.010749317, y: 6.590063, z: 55.004467}
+  m_LocalPosition: {x: 1.518552, y: 19.167562, z: -17.305098}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6468676490593547229
+--- !u!114 &3961896737100219506
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6468676490593547219}
+  m_GameObject: {fileID: 6136369699661904777}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9310c02dae1d54b43964350131e2ff61, type: 3}
+  m_Script: {fileID: 11500000, guid: feec6cee15cb78e428b93b39c0ac42be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelDifficultyDatas:
-  - {fileID: 11400000, guid: 4143d266eb5aaef40b2d3bb85990062b, type: 2}
-  - {fileID: 11400000, guid: f5df593e10319144ab2ff6cdb223bebc, type: 2}
-  - {fileID: 11400000, guid: 02f904226c5d6a644bfd37ec41e579dd, type: 2}
